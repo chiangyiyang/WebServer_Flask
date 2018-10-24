@@ -1,6 +1,5 @@
 from flask import Flask
 from flask import render_template, request
-import json
 
 app = Flask(__name__)
 
@@ -35,10 +34,10 @@ def show_post(post_id):
     return 'Post %d' % post_id
 
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        print("POST: " + request.form['username'])
         return "HELLO " + request.form['username']
     return '''
         <form method="post">
@@ -46,15 +45,6 @@ def login():
             <p><input type=submit value=Login>
         </form>
     '''
-
-
-@app.route('/dht', methods=['POST'])
-def getDht():
-    if request.method == 'POST':
-        msg = "POST: " + json.dumps(request.json)
-        print(msg)
-        return msg
-
 
 app.run(
     host='0.0.0.0',   # 設定對外服務IP
