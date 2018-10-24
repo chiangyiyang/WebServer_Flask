@@ -7,4 +7,7 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello, World!'
 
-app.run()
+
+app.run(
+  host='0.0.0.0',   # 設定對外服務IP
+  port=8080)        # 設定對外服務Port
