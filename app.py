@@ -28,6 +28,12 @@ def hello_world():
 def hello(name=None):
     return render_template('hello.html', name=name)
 
+
+@app.route('/post/<int:post_id>')
+def show_post(post_id):
+    return 'Post %d' % post_id
+
+
 app.run(
     host='0.0.0.0',   # 設定對外服務IP
     port=8080)        # 設定對外服務Port
