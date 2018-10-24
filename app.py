@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template, request
 
 app = Flask(__name__)
 
@@ -33,6 +33,18 @@ def hello(name=None):
 def show_post(post_id):
     return 'Post %d' % post_id
 
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        return "HELLO " + request.form['username']
+    return '''
+        <form method="post">
+            <p><input type=text name=username>
+            <p><input type=submit value=Login>
+        </form>
+    '''
 
 app.run(
     host='0.0.0.0',   # 設定對外服務IP
