@@ -52,7 +52,10 @@ def login():
 def getDht():
     if request.method == 'POST':
         msg = "POST: " + json.dumps(request.json)
-        print(msg)
+        data = request.json
+        f = open('log.txt', 'a')
+        f.write(str(data['temperature']) + ', ' + str(data['humidity']) + '\n')
+        f.close()
         return msg
 
 
