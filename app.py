@@ -59,6 +59,14 @@ def getDht():
         return msg
 
 
+@app.route('/dht_log')
+def getDhtLog():
+    f = open('log.txt', 'r')
+    data = f.read()
+    f.close()
+    return data.replace('\n', '<br>')
+
+
 app.run(
     host='0.0.0.0',   # 設定對外服務IP
     port=8080)        # 設定對外服務Port
