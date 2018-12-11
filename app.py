@@ -2,7 +2,7 @@ from flask import Flask
 from flask import render_template, request
 import json
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 
 @app.route('/')
@@ -65,6 +65,7 @@ def getDhtLog():
     data = f.read()
     f.close()
     return data.replace('\n', '<br>')
+
 
 
 app.run(
