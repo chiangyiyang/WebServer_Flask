@@ -67,6 +67,14 @@ def getDhtLog():
     return data.replace('\n', '<br>')
 
 
+@app.route('/chart_t')
+def getTemperatureChart():
+    f = open('log.txt', 'r')
+    data = f.read()
+    f.close()
+    data = ', '.join([l.split(',')[0] for l in data.split('\n')])
+    return render_template('chart.html', title='Temperature', data=data)
+
 
 app.run(
     host='0.0.0.0',   # 設定對外服務IP
