@@ -5,8 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta http-equiv="refresh" content="5" >
-  
+
   <!-- Load c3.css -->
   <link href="/static/css/c3.css" rel="stylesheet">
 
@@ -16,6 +15,9 @@
 
   
   <script>
+    
+    setTimeout('window.location.reload()', 3000); //指定3秒刷新一次
+
     window.onload = () => {
       var chart = c3.generate({
         bindto: '#chart',
