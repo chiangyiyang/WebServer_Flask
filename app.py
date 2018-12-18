@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, Response
 from flask import render_template, request
 import json
 
@@ -75,6 +75,14 @@ def getTemperatureChart():
     data = ', '.join([l.split(',')[0] for l in data.split('\n')])
     return render_template('chart.html', title='Temperature', data=data)
 
+
+@app.route('/get_t')
+def getTemperature():
+    f = open('log.txt', 'r')
+    data = f.read()
+    f.close()
+    data = ', '.join([l.split(',')[0] for l in data.split('\n')])
+    return Response('{"Temperature":[' + data[:data.rfind(',')] + ']}', mimetype='application/json')
 
 app.run(
     host='0.0.0.0',   # 設定對外服務IP
